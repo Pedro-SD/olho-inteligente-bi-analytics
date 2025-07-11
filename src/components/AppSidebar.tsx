@@ -33,28 +33,32 @@ export function AppSidebar() {
 
   const isActive = (path: string) => currentPath === path
   const getNavCls = ({ isActive }: { isActive: boolean }) =>
-    isActive ? "bg-primary text-primary-foreground font-medium" : "hover:bg-accent/50"
+    isActive ? "bg-white text-black font-medium" : "text-gray-300 hover:bg-gray-800 hover:text-white"
 
   return (
     <Sidebar
       className={collapsed ? "w-14" : "w-64"}
       collapsible="icon"
     >
-      <SidebarContent className="bg-card border-r">
-        <div className="p-4 border-b">
-          <div className="flex items-center gap-2">
-            <Eye className="h-8 w-8 text-primary" />
+      <SidebarContent className="bg-black border-r border-gray-800">
+        <div className="p-4 border-b border-gray-800">
+          <div className="flex items-center gap-3">
+            <img 
+              src="/lovable-uploads/63298617-e599-4e14-b758-b99fb7b4c3e8.png" 
+              alt="Centro Médico dos Olhos" 
+              className="h-10 w-auto"
+            />
             {!collapsed && (
               <div>
-                <h2 className="font-bold text-lg">EyeCare BI</h2>
-                <p className="text-xs text-muted-foreground">Centro Médico</p>
+                <h2 className="font-bold text-lg text-white">EyeCare BI</h2>
+                <p className="text-xs text-gray-300">Centro Médico</p>
               </div>
             )}
           </div>
         </div>
 
         <SidebarGroup>
-          <SidebarGroupLabel>Menu Principal</SidebarGroupLabel>
+          <SidebarGroupLabel className="text-gray-300">Menu Principal</SidebarGroupLabel>
           <SidebarGroupContent>
             <SidebarMenu>
               {items.map((item) => (
