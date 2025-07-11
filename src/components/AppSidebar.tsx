@@ -33,7 +33,7 @@ export function AppSidebar() {
 
   const isActive = (path: string) => currentPath === path
   const getNavCls = ({ isActive }: { isActive: boolean }) =>
-    isActive ? "bg-white text-black font-medium" : "text-gray-300 hover:bg-gray-800 hover:text-white"
+    isActive ? "bg-white text-black font-medium" : "text-white hover:bg-gray-800"
 
   return (
     <Sidebar
@@ -58,7 +58,7 @@ export function AppSidebar() {
         </div>
 
         <SidebarGroup>
-          <SidebarGroupLabel className="text-gray-300">Menu Principal</SidebarGroupLabel>
+          <SidebarGroupLabel className="text-white">Menu Principal</SidebarGroupLabel>
           <SidebarGroupContent>
             <SidebarMenu>
               {items.map((item) => (
