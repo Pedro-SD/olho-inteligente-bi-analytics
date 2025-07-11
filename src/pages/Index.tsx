@@ -18,28 +18,28 @@ const Index = () => {
         
         <main className="flex-1">
           {/* Header com Logo */}
-          <header className="h-20 border-b bg-card/50 backdrop-blur supports-[backdrop-filter]:bg-card/50 flex items-center px-6">
+          <header className="h-20 border-b bg-card/50 backdrop-blur supports-[backdrop-filter]:bg-card/50 flex items-center justify-between px-6">
             <div className="flex items-center gap-4">
-              <SidebarTrigger />
+              <SidebarTrigger className="text-black hover:bg-black/10" />
               <img 
-                src="/lovable-uploads/bb409d3e-cbd2-41b1-af18-edc0553339ef.png" 
+                src="/lovable-uploads/63298617-e599-4e14-b758-b99fb7b4c3e8.png" 
                 alt="Centro Médico dos Olhos" 
-                className="h-12 w-auto"
+                className="h-14 w-auto"
               />
-              <div>
-                <h1 className="text-xl font-semibold">Business Intelligence</h1>
-                <p className="text-sm text-muted-foreground">Centro Médico dos Olhos - Dashboard Completo</p>
-              </div>
+            </div>
+            <div className="text-right">
+              <h1 className="text-xl font-semibold text-black">Business Intelligence</h1>
+              <p className="text-sm text-black/70">Dashboard Completo</p>
             </div>
           </header>
 
           <div className="p-6">
             <Tabs defaultValue="overview" className="space-y-6">
-              <TabsList className="grid w-full grid-cols-4">
-                <TabsTrigger value="overview">Visão Geral</TabsTrigger>
-                <TabsTrigger value="business">BI Operacional</TabsTrigger>
-                <TabsTrigger value="personas">Personas & Público</TabsTrigger>
-                <TabsTrigger value="financeiro">Financeiro</TabsTrigger>
+              <TabsList className="grid w-full grid-cols-4 bg-muted">
+                <TabsTrigger value="overview" className="text-black data-[state=active]:bg-black data-[state=active]:text-white">Visão Geral</TabsTrigger>
+                <TabsTrigger value="business" className="text-black data-[state=active]:bg-black data-[state=active]:text-white">BI Operacional</TabsTrigger>
+                <TabsTrigger value="personas" className="text-black data-[state=active]:bg-black data-[state=active]:text-white">Personas & Público</TabsTrigger>
+                <TabsTrigger value="financeiro" className="text-black data-[state=active]:bg-black data-[state=active]:text-white">Financeiro</TabsTrigger>
               </TabsList>
 
               <TabsContent value="overview" className="space-y-6">
