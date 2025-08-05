@@ -33,15 +33,15 @@ export function AppSidebar() {
 
   const isActive = (path: string) => currentPath === path
   const getNavCls = ({ isActive }: { isActive: boolean }) =>
-    isActive ? "bg-white text-black font-medium" : "text-white hover:bg-gray-800 hover:text-white"
+    isActive ? "bg-sidebar-primary-foreground text-sidebar-background font-medium" : "text-sidebar-foreground hover:bg-sidebar-accent hover:text-sidebar-accent-foreground"
 
   return (
     <Sidebar
       className={collapsed ? "w-14" : "w-64"}
       collapsible="icon"
     >
-      <SidebarContent className="bg-black border-r border-gray-800">
-        <div className="p-4 border-b border-gray-800">
+      <SidebarContent className="bg-sidebar-background border-r border-sidebar-border">
+        <div className="p-4 border-b border-sidebar-border">
           <div className="flex items-center gap-3">
             <img 
               src="/lovable-uploads/63298617-e599-4e14-b758-b99fb7b4c3e8.png" 
@@ -50,23 +50,23 @@ export function AppSidebar() {
             />
             {!collapsed && (
               <div>
-                <h2 className="font-bold text-lg text-white">EyeCare BI</h2>
-                <p className="text-xs text-gray-300">Centro Médico</p>
+                <h2 className="font-bold text-lg text-sidebar-foreground">EyeCare BI</h2>
+                <p className="text-xs text-sidebar-foreground/70">Centro Médico</p>
               </div>
             )}
           </div>
         </div>
 
         <SidebarGroup>
-          <SidebarGroupLabel className="text-white">Menu Principal</SidebarGroupLabel>
+          <SidebarGroupLabel className="text-sidebar-foreground">Menu Principal</SidebarGroupLabel>
           <SidebarGroupContent>
             <SidebarMenu>
               {items.map((item) => (
                 <SidebarMenuItem key={item.title}>
                   <SidebarMenuButton asChild>
-                    <NavLink to={item.url} end className="flex items-center gap-3 w-full text-white hover:bg-gray-800 hover:text-white data-[active]:bg-white data-[active]:text-black data-[active]:font-medium">
-                      <item.icon className="h-4 w-4 text-white" />
-                      {!collapsed && <span className="text-white">{item.title}</span>}
+                    <NavLink to={item.url} end className={getNavCls}>
+                      <item.icon className="h-4 w-4" />
+                      {!collapsed && <span>{item.title}</span>}
                     </NavLink>
                   </SidebarMenuButton>
                 </SidebarMenuItem>
