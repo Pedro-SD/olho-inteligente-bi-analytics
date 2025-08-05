@@ -64,9 +64,9 @@ export function AppSidebar() {
               {items.map((item) => (
                 <SidebarMenuItem key={item.title}>
                   <SidebarMenuButton asChild>
-                    <NavLink to={item.url} end className={getNavCls}>
-                      <item.icon className="h-4 w-4" />
-                      {!collapsed && <span>{item.title}</span>}
+                    <NavLink to={item.url} end className="flex items-center gap-3 w-full text-white hover:bg-gray-800 hover:text-white data-[active]:bg-white data-[active]:text-black data-[active]:font-medium">
+                      <item.icon className="h-4 w-4 text-white" />
+                      {!collapsed && <span className="text-white">{item.title}</span>}
                     </NavLink>
                   </SidebarMenuButton>
                 </SidebarMenuItem>
