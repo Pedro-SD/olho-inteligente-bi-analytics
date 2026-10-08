@@ -31,6 +31,12 @@
       "skillPath": "skills/prospecting/SKILL.md",
       "computedHash": "6e53e93c68e6f1b19f79549ca504ee69dded349337d36a935297b95aca257052"
     },
+    "sales-funnel-blueprint": {
+      "source": "autonnel/autonnel-skills",
+      "sourceType": "github",
+      "skillPath": "sales-funnel-blueprint/SKILL.md",
+      "computedHash": "37229fe4da4ead9d0f61748bcc96879e2cb2aaa9a189d9130a5b273710fd1818"
+    },
     "ui-ux-pro-max": {
       "source": "nextlevelbuilder/ui-ux-pro-max-skill",
       "sourceType": "github",
