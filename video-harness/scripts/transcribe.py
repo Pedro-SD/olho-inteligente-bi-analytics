@@ -27,11 +27,21 @@ def main() -> None:
     if not video.exists():
         sys.exit(f"Não achei {video}")
 
+    import subprocess
+
+    import numpy as np
     from faster_whisper import WhisperModel
+
+    # O ffmpeg decodifica o áudio (16 kHz mono); evita depender da versão do PyAV instalada.
+    raw = subprocess.run(
+        ["ffmpeg", "-v", "error", "-i", str(video), "-ac", "1", "-ar", "16000", "-f", "f32le", "-"],
+        capture_output=True, check=True,
+    ).stdout
+    audio = np.frombuffer(raw, np.float32)
 
     model = WhisperModel(args.model, device="auto", compute_type="int8")
     segments, _ = model.transcribe(
-        str(video), language=args.language, word_timestamps=True, vad_filter=True
+        audio, language=args.language, word_timestamps=True, vad_filter=True
     )
 
     words, lines = [], []
