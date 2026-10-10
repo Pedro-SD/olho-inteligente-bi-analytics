@@ -1,0 +1,7 @@
+node_modules/
+# Vídeos, transcrições e saídas ficam só na máquina; só o plano de exemplo vai para o git.
+projects/*
+!projects/exemplo/
+projects/exemplo/*
+!projects/exemplo/plan.json
+public/projects/
