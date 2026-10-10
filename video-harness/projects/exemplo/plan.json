@@ -1,0 +1,103 @@
+{
+	"title": "como eu faço meus vídeos",
+	"handle": "@seuperfil",
+	"trimStart": 10.2,
+	"trimEnd": 45.4,
+	"scenes": [
+		{
+			"start": 10.2, "end": 13.3, "type": "title", "label": "gravação",
+			"props": {"kicker": "etapa 1", "text": "Grave o vídeo", "at": 10.67}
+		},
+		{
+			"start": 13.3, "end": 17.7, "type": "terminal", "label": "transcrição",
+			"props": {
+				"window": "claude · ~/videos",
+				"prompt": "transcreve com o tempo de cada palavra",
+				"promptAt": 13.4,
+				"tool": "Whisper(video.mp4 · large-v3)",
+				"lines": [
+					{"text": "gravo", "value": "10.80s", "tag": "etapa 1", "at": 14.13},
+					{"text": "transcrição", "value": "13.40s", "tag": "etapa 2", "at": 15.0},
+					{"text": "tempos", "value": "14.13s", "at": 15.6},
+					{"text": "significa", "value": "17.13s", "tag": "significado", "at": 17.13}
+				]
+			}
+		},
+		{
+			"start": 17.7, "end": 20.3, "type": "steps", "label": "dados",
+			"props": {
+				"steps": [
+					{"label": "fala → texto + tempo", "at": 18.07},
+					{"label": "+ significado", "at": 18.87}
+				],
+				"result": {"label": "dados pras cenas", "at": 19.9}
+			}
+		},
+		{
+			"start": 20.3, "end": 24.3, "type": "bullets", "label": "frames",
+			"props": {
+				"window": "Read(6 frames do vídeo)",
+				"title": "O que aparece na gravação",
+				"items": [
+					{"text": "rosto", "at": 21.4},
+					{"text": "mão + gesto", "at": 22.07},
+					{"text": "3 monitores", "at": 22.67},
+					{"text": "fundo claro", "at": 23.33},
+					{"text": "olhar para a câmera", "at": 23.87}
+				]
+			}
+		},
+		{
+			"start": 24.3, "end": 28.3, "type": "terminal", "label": "plano",
+			"props": {
+				"window": "claude · ~/videos",
+				"prompt": "monta o plano de cenas",
+				"promptAt": 24.44,
+				"tool": "Plano(cenas sincronizadas à fala)",
+				"lines": [
+					{"text": "00:00 grave o vídeo", "at": 25.73},
+					{"text": "00:03 transcrição", "at": 26.13},
+					{"text": "00:10 leitura dos frames", "at": 26.8},
+					{"text": "00:18 fila de pedidos", "tag": "preview", "at": 27.2}
+				]
+			}
+		},
+		{
+			"start": 28.3, "end": 32.2, "type": "queue", "label": "exemplo",
+			"props": {
+				"window": "pedidos.app",
+				"title": "fila de pedidos",
+				"items": [
+					{"text": "#101", "at": 29.47},
+					{"text": "#102", "at": 29.93},
+					{"text": "#103", "at": 30.53},
+					{"text": "#104", "at": 31.2},
+					{"text": "#105", "at": 31.8}
+				]
+			}
+		},
+		{
+			"start": 32.2, "end": 38.1, "type": "terminal", "label": "gate",
+			"props": {
+				"window": "claude · ~/videos",
+				"prompt": "aprovar o plano antes de renderizar?",
+				"promptAt": 33.67,
+				"lines": [
+					{"text": "1. Sim, renderizar", "at": 35.93},
+					{"text": "2. Não, quero ajustar", "at": 36.8}
+				]
+			}
+		},
+		{
+			"start": 38.1, "end": 41.0, "type": "title", "label": "gate",
+			"props": {"kicker": "o gate do processo", "text": "Você aprova antes", "at": 38.6}
+		},
+		{
+			"start": 41.0, "end": 45.4, "type": "compare", "label": "economia",
+			"props": {
+				"left": {"title": "Sem gate", "items": ["gera tudo", "gasta tokens", "joga fora"], "at": 41.6},
+				"right": {"title": "Com gate", "items": ["ajusta o plano", "0 tokens à toa", "só o aprovado"], "at": 43.6}
+			}
+		}
+	]
+}

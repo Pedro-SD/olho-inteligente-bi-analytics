@@ -1,0 +1,53 @@
+{
+  "version": 1,
+  "skills": {
+    "ad-creative": {
+      "source": "coreyhaines31/marketingskills",
+      "sourceType": "github",
+      "skillPath": "skills/ad-creative/SKILL.md",
+      "computedHash": "7c2beab672f7f50542c40472fe45ad4a1920f2395ccf14f79bb54cf58a004b22"
+    },
+    "content-strategy": {
+      "source": "coreyhaines31/marketingskills",
+      "sourceType": "github",
+      "skillPath": "skills/content-strategy/SKILL.md",
+      "computedHash": "7677dba18780b18ea2247b44d2cc8be05ec1dbec319da51a21cf297eb3d0fd1b"
+    },
+    "frontend-design": {
+      "source": "anthropics/skills",
+      "sourceType": "github",
+      "skillPath": "skills/frontend-design/SKILL.md",
+      "computedHash": "89496d5dd00f4810205f351759594fc2742bf8eea85a2f2b2d1de59f4bd91576"
+    },
+    "marketing-psychology": {
+      "source": "coreyhaines31/marketingskills",
+      "sourceType": "github",
+      "skillPath": "skills/marketing-psychology/SKILL.md",
+      "computedHash": "50d735eb0f5c36f379ed2200f21aeacc9b9ad85667b5d33ec6111857352a1340"
+    },
+    "prospecting": {
+      "source": "coreyhaines31/marketingskills",
+      "sourceType": "github",
+      "skillPath": "skills/prospecting/SKILL.md",
+      "computedHash": "6e53e93c68e6f1b19f79549ca504ee69dded349337d36a935297b95aca257052"
+    },
+    "sales-funnel-blueprint": {
+      "source": "autonnel/autonnel-skills",
+      "sourceType": "github",
+      "skillPath": "sales-funnel-blueprint/SKILL.md",
+      "computedHash": "37229fe4da4ead9d0f61748bcc96879e2cb2aaa9a189d9130a5b273710fd1818"
+    },
+    "ui-ux-pro-max": {
+      "source": "nextlevelbuilder/ui-ux-pro-max-skill",
+      "sourceType": "github",
+      "skillPath": ".claude/skills/ui-ux-pro-max/SKILL.md",
+      "computedHash": "27b1e8c953e26f962e3314281601959b04787edf3fd7fccadce176ff844c688d"
+    },
+    "web-design-guidelines": {
+      "source": "vercel-labs/agent-skills",
+      "sourceType": "github",
+      "skillPath": "skills/web-design-guidelines/SKILL.md",
+      "computedHash": "a6a44d5498f7e8f68289902f3dedfc6f38ae0cee1e96527c80724cf27f727c2a"
+    }
+  }
+}
