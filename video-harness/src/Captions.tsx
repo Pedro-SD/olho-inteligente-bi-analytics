@@ -1,7 +1,7 @@
 import React, {useMemo} from 'react';
 import type {Word} from './types';
 import {theme} from './theme';
-import {useTime} from './anim';
+import {pop, useTime} from './anim';
 
 type Chunk = {words: Word[]; s: number; e: number};
 
@@ -36,7 +36,7 @@ const toChunks = (words: Word[]): Chunk[] => {
 };
 
 export const Captions: React.FC<{words: Word[]; top: number}> = ({words, top}) => {
-	const {t} = useTime();
+	const {t, fps} = useTime();
 	const chunks = useMemo(() => toChunks(words), [words]);
 	const chunk = chunks.find((c) => t >= c.s && t < c.e);
 	if (!chunk) return null;
@@ -61,6 +61,7 @@ export const Captions: React.FC<{words: Word[]; top: number}> = ({words, top}) =
 		>
 			{chunk.words.map((word, i) => {
 				const active = t >= word.s && t < (chunk.words[i + 1]?.s ?? chunk.e);
+				const bump = active ? pop(t, word.s, fps, 10) : 0;
 				return (
 					<span
 						key={i}
@@ -72,6 +73,8 @@ export const Captions: React.FC<{words: Word[]; top: number}> = ({words, top}) =
 							textShadow: active ? 'none' : '0 4px 0 #000, 0 0 18px rgba(0,0,0,.65)',
 							WebkitTextStroke: active ? undefined : '2px #000',
 							paintOrder: 'stroke fill',
+							display: 'inline-block',
+							transform: `scale(${1 + 0.08 * bump})`,
 						}}
 					>
 						{word.w}

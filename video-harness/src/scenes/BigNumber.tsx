@@ -3,7 +3,7 @@ import {theme} from '../theme';
 import {ease, pop, useTime} from '../anim';
 import type {Scene} from '../types';
 
-// Número que conta até o valor. props: { value, prefix?, suffix?, label, at?, decimals? }
+// Número que aparece quando a cena entra e conta até o valor a partir de `at`. props: { value, prefix?, suffix?, label, at?, countFor?, decimals? }
 export const BigNumber: React.FC<{scene: Scene}> = ({scene}) => {
 	const {t, fps} = useTime();
 	const {
@@ -12,11 +12,20 @@ export const BigNumber: React.FC<{scene: Scene}> = ({scene}) => {
 		suffix = '',
 		label = '',
 		at = scene.start,
+		countFor = 1.1,
 		decimals = 0,
-	} = scene.props as {value?: number; prefix?: string; suffix?: string; label?: string; at?: number; decimals?: number};
-	const n = Number(value) * ease(t, at, 1.1);
+	} = scene.props as {
+		value?: number;
+		prefix?: string;
+		suffix?: string;
+		label?: string;
+		at?: number;
+		countFor?: number;
+		decimals?: number;
+	};
+	const n = Number(value) * ease(t, at, countFor);
 	const shown = n.toLocaleString('pt-BR', {minimumFractionDigits: decimals, maximumFractionDigits: decimals});
-	const p = pop(t, at, fps);
+	const p = pop(t, scene.start, fps);
 
 	return (
 		<div
@@ -51,7 +60,7 @@ export const BigNumber: React.FC<{scene: Scene}> = ({scene}) => {
 					fontWeight: 500,
 					fontSize: 48,
 					color: theme.text,
-					opacity: pop(t, at + 0.3, fps),
+					opacity: pop(t, scene.start + 0.3, fps),
 					maxWidth: 820,
 					textAlign: 'center',
 				}}

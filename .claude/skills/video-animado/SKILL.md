@@ -39,9 +39,13 @@ Abra as folhas com a ferramenta Read e anote: enquadramento, onde está o rosto,
 ## 4. Plano de cenas → GATE de aprovação
 
 Escreva `projects/<nome>/plan.json` (formato abaixo). Regras:
-- Uma cena a cada 3–6 s. Cada `start` cai numa palavra real de `words.json`, e cada `at` (aparecimento de item) é o `s` da palavra que dispara aquele item.
+- Cada `start` cai numa palavra real de `words.json`, e cada `at` (aparecimento de item) é o `s` da palavra que dispara aquele item.
 - A cena mostra o que está sendo dito: se fala de fila de pedidos, usa `queue`; de etapas, `steps`; de número, `number`; de comando/ferramenta, `terminal`; de antes x depois, `compare`.
-- Corte silêncio no começo e no fim com `trimStart`/`trimEnd`.
+- **Alterne tela dividida e tela cheia.** A tela só divide enquanto há uma cena ativa. Use cenas (3–10 s) para listas, números e comparações, e deixe a pessoa em tela cheia nas falas de emoção, abertura e chamada para ação, com `callouts` (frase curta em destaque) e `emphasis` (zoom na palavra forte).
+- Não deixe o palco vazio: a cena começa no máximo ~1,5 s antes do primeiro item aparecer.
+- Música e efeitos: `"music": {"src": "music/bed.wav", "volume": 0.13}` e `"sfx": true`. Se `public/sfx/` estiver vazio, rode `python3 scripts/make-sounds.py`.
+- Corte silêncio, ajustes e sobras no começo e no fim com `trimStart`/`trimEnd`.
+- Confirme com o usuário números e nomes que a transcrição pode ter errado antes de pôr na tela.
 
 Depois rode `node scripts/show-plan.mjs projects/<nome>` e mostre ao usuário uma tabela: horário, tipo de cena, o que aparece e a fala daquele trecho. Pergunte:
 
@@ -60,7 +64,7 @@ Antes de entregar, extraia alguns quadros do resultado (`ffmpeg -i output.mp4 -v
 
 ## 6. Entregar
 
-Mande o `output.mp4` com SendUserFile. Os vídeos não vão para o git (ver `.gitignore`).
+Mande `projects/<nome>/<nome>-envio.mp4` com SendUserFile (o `output.mp4` em qualidade máxima costuma passar do limite de 30 MB). Os vídeos não vão para o git (ver `.gitignore`).
 
 ## Formato do plan.json
 
@@ -70,6 +74,10 @@ Mande o `output.mp4` com SendUserFile. Os vídeos não vão para o git (ver `.gi
   "handle": "@perfil",
   "trimStart": 0.4,
   "trimEnd": 58.2,
+  "music": {"src": "music/bed.wav", "volume": 0.13},
+  "sfx": true,
+  "callouts": [{"start": 0.6, "end": 3.0, "kicker": "direto de Bariloche", "text": "Hands on em Vitória"}],
+  "emphasis": [{"at": 2.4, "scale": 1.12}],
   "scenes": [
     {"start": 0.4, "end": 3.1, "type": "title", "label": "abertura",
      "props": {"kicker": "etapa 1", "text": "Grave o vídeo", "at": 0.6}},

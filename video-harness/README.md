@@ -45,9 +45,21 @@ Todo `at` é o segundo (no vídeo bruto) em que o elemento aparece. Use o `s` da
 | `title` | frase de impacto | `text`, `kicker?`, `at?` |
 | `bullets` | lista aparecendo item a item | `title?`, `window?`, `items: [{text, at, tag?}]` |
 | `queue` | coisas chegando numa fila | `title?`, `window?`, `items: [{text, at}]`, `processor?` |
-| `number` | número contando até o valor | `value`, `prefix?`, `suffix?`, `label`, `at?`, `decimals?` |
+| `number` | número que conta até o valor (de `at` até `at + countFor` segundos) | `value`, `prefix?`, `suffix?`, `label`, `at?`, `countFor?`, `decimals?` |
 | `terminal` | pedido digitado + respostas (estilo Claude Code) | `window?`, `prompt`, `promptAt?`, `tool?`, `lines: [{text, at, value?, tag?}]` |
 | `steps` | fluxo em etapas + resultado | `title?`, `steps: [{label, at}]`, `result?: {label, at}` |
 | `compare` | antes x depois | `left: {title, items, at}`, `right: {title, items, at}` |
+
+## Tela dividida x tela cheia, destaques, zoom e som
+
+- **Tela dividida só durante as cenas.** Entre uma cena e outra, a pessoa ocupa a tela inteira. Cenas separadas por menos de 0,6 s ficam num bloco só de tela dividida. Para alternar bastante, deixe trechos sem cena.
+- **`callouts`:** destaque amarelo por cima da pessoa nos trechos em tela cheia: `[{start, end, text, kicker?}]`.
+- **`emphasis`:** zoom rápido na pessoa numa palavra forte: `[{at, scale?}]` (padrão 1.12).
+- **`music`:** `{src: "music/bed.wav", volume: 0.13}`, em loop, com fade no começo e no fim. `false` desliga.
+- **`sfx`:** efeitos automáticos tirados do plano (whoosh quando uma cena ou destaque entra, pop em cada item, impacto em títulos, números e zooms, ding no último destaque). `false` desliga.
+
+Os sons de `public/sfx/` e `public/music/` são gerados por síntese (`python3 scripts/make-sounds.py`), originais e sem direitos de terceiros. Para usar os seus, substitua os arquivos com o mesmo nome ou aponte `music.src` para outro arquivo em `public/`.
+
+O render final também gera `<nome>-envio.mp4`, uma cópia comprimida para mandar por chat ou WhatsApp.
 
 Veja um plano completo em `projects/exemplo/plan.json`. Cores e fontes ficam em `src/theme.ts`.

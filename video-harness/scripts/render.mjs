@@ -57,3 +57,14 @@ await renderMedia({
 	},
 });
 console.log(`Pronto → ${out}`);
+
+// Cópia leve (~15-20 MB por minuto) para mandar por chat, WhatsApp ou e-mail.
+if (!preview) {
+	const share = path.join(project, `${slug}-envio.mp4`);
+	execFileSync('ffmpeg', [
+		'-v', 'error', '-y', '-i', out,
+		'-c:v', 'libx264', '-crf', '24', '-preset', 'slow', '-pix_fmt', 'yuv420p',
+		'-c:a', 'aac', '-b:a', '160k', '-movflags', '+faststart', share,
+	]);
+	console.log(`Versão para envio → ${share}`);
+}
